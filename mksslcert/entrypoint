@@ -1,0 +1,7 @@
+#!/bin/bash
+
+if [ ! -z "$1" ]; then
+    export DOMAIN="${1}"
+fi
+
+/usr/bin/mksslcert /ssl/ssl.key /ssl/ssl.crt "$DOMAIN"
