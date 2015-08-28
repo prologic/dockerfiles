@@ -11,8 +11,8 @@
         "httpKeepAlive": false,
         "https": {
             "port": 443,
-            "key": "/etc/ssl/ssl.key",
-            "cert": "/etc/ssl/ssl.crt"
+            "key": "/ssl/ssl.key",
+            "cert": "/ssl/ssl.crt"
         }
     },
     "driver": ["redis://127.0.0.1:6379"]

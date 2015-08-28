@@ -15,6 +15,23 @@ hipache:
             - "80:80"
             - "443:443"
         volumes:
-            - etc/hipache/ssl:/etc/ssl
+            - ./ssl:/ssl
+        restart: always
+```
+
+Or in conjunction with \[prologic/mksslcrt\](<https://hub.docker.com/r/prologic/mksslcrt/>):
+
+``` sourceCode
+sslcerts:
+    image: prologic/mksslcrt
+    command: mydomain.com
+
+hipache:
+    image: prologic/hipache
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes_from:
+            - sslcerts
         restart: always
 ```
