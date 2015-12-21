@@ -5,26 +5,25 @@
 Alpine based Python Runtime for Docker
 ======================================
 
-A `Python`_ `Docker`_ image based on `Alpine Linux`_ that provides a minimal but useful
-runtime environment.
+.. image:: https://badge.imagelayers.io/prologic/python-runtime:latest.svg
+   :target: https://imagelayers.io/?images=prologic%2Fpython-runtime:latest
+   :alt: Image Layers
+
+A full `Python`_ `Docker`_ image based on `Alpine Linux`_ that
+provides a minimal but useful runtime environment at only 25MB!
 
 Supported tags (*and Python version*):
 
 - 2.7
 
-.. note:: This image does not include any build tools so 3rd party C-extensions that do not have
-          wheels will not install.
+.. note:: This image does not include any build tools so 3rd party
+          C-extensions that do not have wheels will not install.
 
-This image is optimized for size::
-    
-    $ docker images prologic/python-runtime
-    REPOSITORY                TAG                 IMAGE ID            CREATED              VIRTUAL SIZE
-    prologic/python-runtime   2.7-onbuild         0f52cadcc471        About a minute ago   29.73 MB
-    prologic/python-runtime   2.7                 22f023d7f32b        29 minutes ago       29.73 MB
-    prologic/python-runtime   latest              22f023d7f32b        29 minutes ago       29.73 MB
+.. note:: Please also note to further optimize this image I removed
+          lib2to3, lib-tk, ensurepip, tests, idle and libidle.
 
-There is also an ``2.7-onbuild`` tag which sets up a typical Python application by performing the
-following tasks:
+There is also an ``2.7-onbuild`` tag which sets up a typical Python
+application by performing the following tasks:
 
 .. code-block:: docker
     
