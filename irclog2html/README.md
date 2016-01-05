@@ -5,4 +5,4 @@ for [irclog2html](https://pypi.python.org/pypi/irclog2html)
 
 ## Usage
 
-    $ docker run -v /path/to/logs:/data prologic/irclog2html /data
+    $ docker run -v /path/to/logs:/data prologic/irclog2html
