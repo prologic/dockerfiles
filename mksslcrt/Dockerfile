@@ -1,7 +1,5 @@
 FROM alpine
 
-VOLUME /ssl
-
 ENV DOMAIN localhost
 
 ENTRYPOINT ["/entrypoint"]
