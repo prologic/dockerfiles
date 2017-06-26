@@ -5,3 +5,5 @@ if [ ! -z "$1" ]; then
 fi
 
 /usr/bin/mksslcert /ssl/ssl.key /ssl/ssl.crt "$DOMAIN"
+chmod 644 /ssl/ssl.key /ssl/ssl.crt
+echo "SSL certs successfully created for $DOMAIN"
