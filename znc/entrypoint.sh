@@ -3,10 +3,9 @@
 # Options.
 DATADIR="/data"
 
-# Create default config if it doesn't exist
-if [ ! -f "${DATADIR}/configs/znc.conf" ]; then
-  mkdir -p "${DATADIR}/configs"
-  cp /znc.conf "${DATADIR}/configs/znc.conf"
+# Create default configs if it doesn't exist
+if [ ! -d "${DATADIR}/configs" ]; then
+  cp -r /usr/src/configs "${DATADIR}/configs"
 fi
 
 # Create default modules if it doesn't exist

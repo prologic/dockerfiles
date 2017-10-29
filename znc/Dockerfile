@@ -6,11 +6,15 @@ RUN apk -U add znc znc-modperl znc-modtcl znc-modpython znc-extra && \
     rm -rf /var/cache/apk/*
 
 RUN pip3 install requests
+
 COPY mutter.py /usr/src/znc/modules/mutter.py
+COPY znc.conf /usr/src/configs/znc.conf
+COPY cert.pem /ssl/cert.pem
+COPY key.pem /ssl/key.pem
 
 ADD entrypoint.sh /entrypoint.sh
-ADD znc.conf /znc.conf
 
+VOLUME /ssl
 VOLUME /data
 
 EXPOSE 7000
