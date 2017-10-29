@@ -6,10 +6,10 @@ RUN apk -U add znc znc-modperl znc-modtcl znc-modpython znc-extra && \
     rm -rf /var/cache/apk/*
 
 RUN pip3 install requests
+COPY mutter.py /usr/src/znc/modules/mutter.py
 
 ADD entrypoint.sh /entrypoint.sh
 ADD znc.conf /znc.conf
-ADD https://bitbucket.org/jmclough/mutter-push/raw/master/mutter.py /usr/src/znc/modules/mutter.py
 
 VOLUME /data
 
