@@ -13,7 +13,8 @@ Configuration is via environment variables:
 A little tiny shell-script driven Prometheus IRC notifications for alerts.
 
 This uses [msgbus](https://github.com/prologic/msgbus) to subscribe to alerts
-coming from Prometheus (*which has been configured to send alerts to msgbus*)
+coming from Prometheus (*which has been configured to send alerts to msgbus*),
+[jq](https://stedolan.github.io/jq/) to parse and extract the JSON payload
 and [irccat](https://github.com/prologic/irccat) to connect to and post on IRC.
 
 Configuration is via environment variables:
