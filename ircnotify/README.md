@@ -43,6 +43,23 @@ $ docker run -t prologic/ircnotify
 
 Some pre-defined templates to help get you started:
 
-* Docker Hub: `'"NOTICE: \(.push_data.pusher) pushed image \(.repository.repo_name) with tag \(.push_data.tag)"'`
-* Drone CI: `'"NOTICE: \(.repo.owner)/\(.repo.name) build \(.build.number) \(.build.status) (\(.build.link))"'`
+* Docker Hub: `'. | "NOTICE: \(.push_data.pusher) pushed image \(.repository.repo_name) with tag \(.push_data.tag)"'`
+* Drone CI: `'. | "NOTICE: \(.repo.owner)/\(.repo.name) build \(.build.number) \(.build.status) (\(.build.link))"'`
 * Prometheus AlertManager: `'.alerts[] | "ALERT: \(.labels.alertname) \(.status) - \(.annotations.summary)"'`
+
+**Note:** When specifying the `command:` in a `docker-compose.yml` file
+it's best to the pipe `|` notation for literal interpretation. Example:
+
+```#!yaml
+version: "3.3"
+
+services:
+  hello:
+    image: prologic/ircnotify
+    command: |
+      '"\(.message)"'
+    deploy:
+      restart_policy:
+        condition: on-failure
+      replicas: 1
+```
