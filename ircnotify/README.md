@@ -43,20 +43,6 @@ $ docker run -t prologic/ircnotify
 
 Some pre-defined templates to help get you started:
 
-Docker Hub:
-
-```
-`. | "NOTICE: \(.push_data.pusher) pushed image \(.repository.repo_name) with tag \(.push_data.tag)"'
-```
-
-Drone CI:
-
-```
-'. | "NOTICE: \(.repo.owner)/\(.repo.name) build \(.build.number) \(.build.status) (\(.build.link))"'
-```
-
-Prometheus AlertManager:
-
-```
-'.alerts[] | "ALERT: \(.labels.alertname) \(.status) - \(.annotations.summary)"'
-```
+* Docker Hub: `'. | "NOTICE: \(.push_data.pusher) pushed image \(.repository.repo_name) with tag \(.push_data.tag)"'`
+* Drone CI: `'. | "NOTICE: \(.repo.owner)/\(.repo.name) build \(.build.number) \(.build.status) (\(.build.link))"'`
+* Prometheus AlertManager: `'.alerts[] | "ALERT: \(.labels.alertname) \(.status) - \(.annotations.summary)"'`
