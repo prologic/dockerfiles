@@ -7,20 +7,20 @@ REGISTRY_HOSTNAME="${REGISTRY_HOSTNAME:-r.mills.io}"
 
 function docker_login() {
   username="${REGISTRY_USERNAME}"
-  if [ "${username}" -eq "" ]; then
+  if [[ -z "${username}" ]]; then
     if [ -f /run/secrets/registry_username ]; then
       username="$(cat /run/secrets/registry_username)"
     fi
   fi
 
   password="${REGISTRY_PASSWORD}"
-  if [ "${password}" -eq "" ]; then
+  if [[ -z "${password}" ]]; then
     if [ -f /run/secrets/registry_password ]; then
       password="$(cat /run/secrets/registry_password)"
     fi
   fi
 
-  if [ "${username}" -ne "" ]; then
+  if [[ ! -z "${username}" ]]; then
     docker login -u "${username}" -p "${password}"
   fi
 }
