@@ -21,7 +21,7 @@ function docker_login() {
   fi
 
   if [[ ! -z "${username}" ]]; then
-    docker login -u "${username}" -p "${password}"
+    echo "${password}" | docker login -u "${username}" --password-stdin "${REGISTRY_HOSTNAME}"
   fi
 }
 
