@@ -8,9 +8,9 @@ RUN apk add --update git && \
 FROM alpine
 
 ENV MSGBUS_URI https://msgbus.mills.io/
-ENV MSGBUS_TOPIC hello
+ENV MSGBUS_TOPIC ci.mills.io
 
-ENV IRC_NICK ircnotify
+ENV IRC_NICK autoupdate
 ENV IRC_HOST irc.mills.io
 ENV IRC_PORT 6667
 ENV IRC_CHAN #alerts
