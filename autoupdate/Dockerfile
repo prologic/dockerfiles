@@ -15,7 +15,7 @@ ENV IRC_HOST irc.mills.io
 ENV IRC_PORT 6667
 ENV IRC_CHAN #alerts
 
-RUN apk add --update ca-certificates jq docker && \
+RUN apk add --update ca-certificates bash jq docker && \
     rm -rf /var/cache/apk/*
 
 COPY --from=build /go/bin/irccat /usr/local/bin/irccat
