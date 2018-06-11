@@ -11,6 +11,8 @@ to perform the updates to the matching services. An announcement is also
 sent to a configurable IRC server and channel using
 [irccat](https://github.com/prologic/irccat).
 
+By default the configuration parses Drone CI webhooks but can be configured.
+
 Required positional arguments are:
 
 - `<image>`
@@ -20,9 +22,13 @@ You *may* optionally specify multiple services to be updated.
 
 Configuration is via environment variables:
 
+- `JQ_TEMPLATE` -- Filter the payload for the image being updated
 - `MSGBUS_URI` -- The msgbus endpoint uri to connect to for pushed alerts
 - `MSGBUS_TOPIC` -- The msgbus topic to subscribe to for alerts
+- `REGISTRY_(HOSTNAME|USERNAME|PASSWORD)` -- Docker registry configuration and optional login
 - `IRC_(HOST|PORT|CHAN|NICK)` - Various IRC configuration parameters
+
+**Note:** You can also use Docker Secrets to manage registry credentials. Use names `registry_username` and `registry_password`.
 
 ## Example(s)
 

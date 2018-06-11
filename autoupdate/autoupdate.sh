@@ -10,13 +10,15 @@ IRC_HOST="${IRC_HOST:-irc.mills.io}"
 IRC_PORT="${IRC_PORT:-6667}"
 IRC_CHAN="${IRC_CHAN:-#alerts}"
 
+JQ_TEMPLATE="${JQ_TEMPLATE:-"\"\\(.repo .owner)/\\(.repo .name)\""}"
+
 IMAGE="${1}"
 shift
 
 SERVICES=("${@}")
 
 payload="$(cat - | jq -r '.payload' | base64 -d)"
-repo="$(echo "${payload}" | jq -r '"\(.repo .owner)/\(.repo .name)"')"
+image="$(echo "${payload}" | jq -r "${UQ_TEMPLATE}")"
 
 function update_service() {
   service="${1}"
@@ -26,7 +28,7 @@ function update_service() {
   docker service update -d --image "${image}" --with-registry-auth "${service}"
 }
 
-if [[ "${repo}" == "${IMAGE}" ]]; then
+if [[ "${image}" == "${IMAGE}" ]]; then
   echo "incoming payload matches ${repo} == ${IMAGE}"
   for service in "${SERVICES[@]}"; do
     echo "updating services ${service} ..."
