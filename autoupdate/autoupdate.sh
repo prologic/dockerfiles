@@ -18,7 +18,7 @@ shift
 SERVICES=("${@}")
 
 payload="$(cat - | jq -r '.payload' | base64 -d)"
-image="$(echo "${payload}" | jq -r "${UQ_TEMPLATE}")"
+image="$(echo "${payload}" | jq -r "${JQ_TEMPLATE}")"
 
 function update_service() {
   service="${1}"
