@@ -12,13 +12,13 @@ IRC_CHAN="${IRC_CHAN:-#alerts}"
 
 JQ_TEMPLATE="${JQ_TEMPLATE:-"\"\\(.repo .owner)/\\(.repo .name)\""}"
 
-IMAGE="${1}"
+REPO="${1}"
 shift
 
 SERVICES=("${@}")
 
 payload="$(cat - | jq -r '.payload' | base64 -d)"
-image="$(echo "${payload}" | jq -r "${JQ_TEMPLATE}")"
+repo="$(echo "${payload}" | jq -r "${JQ_TEMPLATE}")"
 
 function update_service() {
   service="${1}"
@@ -28,8 +28,8 @@ function update_service() {
   docker service update -d --image "${image}" --with-registry-auth "${service}"
 }
 
-if [[ "${image}" == "${IMAGE}" ]]; then
-  echo "incoming payload matches ${image} == ${IMAGE}"
+if [[ "${repo}" == "${REPO}" ]]; then
+  echo "incoming payload matches ${repo} == ${REPO}"
   for service in "${SERVICES[@]}"; do
     echo "updating services ${service} ..."
     update_service "${service}"
@@ -37,5 +37,5 @@ if [[ "${image}" == "${IMAGE}" ]]; then
       | irccat -n "${IRC_NICK}" "${IRC_HOST}:${IRC_PORT}" "${IRC_CHAN}"
   done
 else
-  echo "payload mismatch ${image} != ${IMAGE}"
+  echo "payload mismatch ${repo} != ${REPO}"
 fi
