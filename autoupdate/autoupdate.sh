@@ -29,11 +29,13 @@ function update_service() {
 }
 
 if [[ "${image}" == "${IMAGE}" ]]; then
-  echo "incoming payload matches ${repo} == ${IMAGE}"
+  echo "incoming payload matches ${image} == ${IMAGE}"
   for service in "${SERVICES[@]}"; do
     echo "updating services ${service} ..."
     update_service "${service}"
     echo "NOTICE: service updated ${service}" \
       | irccat -n "${IRC_NICK}" "${IRC_HOST}:${IRC_PORT}" "${IRC_CHAN}"
   done
+else
+  echo "payload mismatch ${image} != ${IMAGE}"
 fi
