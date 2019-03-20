@@ -1,3 +1,3 @@
 FROM golang:alpine
 
-RUN apk --no-cache -U build-base make protobuf protobuf-dev
+RUN apk --no-cache -U build-base git make protobuf protobuf-dev
