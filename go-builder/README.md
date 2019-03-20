@@ -7,3 +7,4 @@ A [Go](https://golang.org) build environment based on
 - Git
 - Make
 - Protobuf
+- protoc-gen-go
