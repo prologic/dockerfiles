@@ -3,7 +3,7 @@ MAINTAINER James Mills, prologic at shortcircuit dot net dot au
 
 RUN apk -U add build-base git openssl-dev && \
     apk -U add znc znc-dev znc-modperl znc-modtcl znc-modpython znc-extra && \
-    apk -U add ca-certificates && \
+    apk -U add ca-certificates icu icu-dev && \
     rm -rf /var/cache/apk/*
 
 RUN pip3 install requests
