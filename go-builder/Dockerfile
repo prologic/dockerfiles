@@ -7,4 +7,4 @@ RUN apk add --no-cache -U \
 RUN mkdir /src
 WORKDIR /src
 
-ONBUILD make
+ONBUILD RUN make
