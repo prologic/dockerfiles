@@ -5,6 +5,7 @@ RUN apk add --no-cache -U \
 	go get -u github.com/golang/protobuf/protoc-gen-go
 
 RUN mkdir /src
-WORKDIR /src
 
-ONBUILD RUN make
+ONBUILD WORKDIR /src
+ONBUILD COPY . .
+ONBUILD RUN /bin/sh -c "[ -f Makefile ] && make || go build"
