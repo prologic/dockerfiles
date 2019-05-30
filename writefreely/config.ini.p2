@@ -1,0 +1,36 @@
+[server]
+hidden_host          = 
+port                 = 8080
+bind                 = 0.0.0.0
+tls_cert_path        = 
+tls_key_path         = 
+templates_parent_dir = 
+static_parent_dir    = 
+pages_parent_dir     = /data/pages
+keys_parent_dir      = /data/keys
+
+[database]
+type     = sqlite3
+filename = /data/writefreely.db
+username = 
+password = 
+database = 
+host     = localhost
+port     = 3306
+
+[app]
+site_name         = Mills
+site_description  = Mills Family Micro Blog
+host              = https://blog.mills.io/
+theme             = write
+disable_js        = false
+webfonts          = true
+single_user       = false
+open_registration = false
+min_username_len  = 3
+max_blogs         = 1
+federation        = true
+public_stats      = true
+private           = false
+local_timeline    = true
+user_invites      = true
