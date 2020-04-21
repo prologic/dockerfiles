@@ -1,9 +1,8 @@
 FROM alpine:latest
 MAINTAINER James Mills, prologic at shortcircuit dot net dot au
 
-RUN apk --no-cache -U add build-base git openssl-dev && \
-    znc znc-dev znc-modperl znc-modtcl znc-modpython znc-extra && \
-    ca-certificates icu icu-dev
+RUN apk --no-cache -U add build-base git openssl-dev znc znc-dev znc-modperl \
+    znc-modtcl znc-modpython znc-extra ca-certificates icu icu-dev
 
 RUN pip3 install requests
 
