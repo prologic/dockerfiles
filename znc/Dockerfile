@@ -16,7 +16,6 @@ RUN cd /usr/src/znc/modules && git clone https://github.com/cocodelabs/znc-palav
 RUN cd /usr/src/znc/modules/znc-palaver && make && \
     mv palaver.so /usr/src/znc/modules/
 
-COPY mutter.py /usr/src/znc/modules/mutter.py
 COPY znc.conf /usr/src/configs/znc.conf
 COPY cert.pem /ssl/cert.pem
 COPY key.pem /ssl/key.pem
